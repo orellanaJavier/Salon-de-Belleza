@@ -1,12 +1,37 @@
 import React, { useState, useCallback } from "react";
 import { Dimensions, BackHandler, SafeAreaView, View, ScrollView, TouchableOpacity, ImageBackground, TextInput, StatusBar, Image, StyleSheet, Text } from "react-native";
-import { Colors, Fonts, Sizes, } from "../constants/styles";
+import { Colors, Fonts, Sizes, } from '../../constants/styles';
 import { FontAwesome, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { useFocusEffect } from "@react-navigation/native";
+import {getAuth,signInWithEmailAndPassword} from 'firebase/auth';
+import { initializeApp } from 'firebase/app';
+import { firebaseConfig } from '../../firebaseConfig';
+import { useNavigation } from '@react-navigation/native';
 
 const { width } = Dimensions.get('screen');
 
-const SigninScreen = ({ navigation }) => {
+const SigninScreen = () => {
+    const [email,setEmail] = React.useState('')
+  const [password,setPassword] = React.useState('')
+  const [name,setName] = React.useState('')
+  const navigation = useNavigation();
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  const handleSignIn = () =>{
+    signInWithEmailAndPassword(auth,email,password,name)
+    .then((userCredential) =>{
+      console.log('Iniciar En')
+      const user = userCredential.user;
+      console.log(user)
+      navigation.navigate('HomeScreen')
+    })
+    .catch(error =>{
+      console.log(error)
+    })
+  };
+
 
     const backAction = () => {
         backClickCount == 1 ? BackHandler.exitApp() : _spring();
@@ -37,8 +62,6 @@ const SigninScreen = ({ navigation }) => {
     const updateState = (data) => setState((state) => ({ ...state, ...data }))
 
     const {
-        userName,
-        password,
         securePassword,
         backClickCount,
     } = state;
@@ -47,7 +70,7 @@ const SigninScreen = ({ navigation }) => {
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
             <StatusBar backgroundColor={Colors.primaryColor} />
             <ImageBackground
-                source={require('../assets/images/bg.png')}
+                source={require('../../assets/images/bg.png')}
                 style={{ flex: 1, left: -width / 20.0, }}
             >
                 <View style={{ flex: 1, right: -width / 20.0, }}>
@@ -102,15 +125,15 @@ const SigninScreen = ({ navigation }) => {
                 <View style={styles.socialMediaOptionsWrapStyle}>
                     {optionsShort({
                         bgColor: '#4267B2',
-                        image: require('../assets/images/icons/facebook.png'),
+                        image: require('../../assets/images/icons/facebook.png'),
                     })}
                     {optionsShort({
                         bgColor: '#1DA1F2',
-                        image: require('../assets/images/icons/twitter.png'),
+                        image: require('../../assets/images/icons/twitter.png'),
                     })}
                     {optionsShort({
                         bgColor: '#EA4335',
-                        image: require('../assets/images/icons/google.png')
+                        image: require('../../assets/images/icons/google.png')
                     })}
                 </View>
             </View>
@@ -153,9 +176,10 @@ const SigninScreen = ({ navigation }) => {
         return (
             <TouchableOpacity
                 activeOpacity={0.9}
-                onPress={() => navigation.push('Signup')}
+                onPress={handleSignIn}
                 style={styles.signinButtonStyle}
             >
+                
                 <Text style={{ ...Fonts.whiteColor18SemiBold }}>
                     Sign In
                 </Text>
@@ -184,7 +208,7 @@ const SigninScreen = ({ navigation }) => {
                         <TextInput
                             secureTextEntry={securePassword}
                             value={password}
-                            onChangeText={(text) => updateState({ password: text })}
+                            onChangeText={setPassword}
                             placeholder="Password"
                             placeholderTextColor={Colors.grayColor}
                             selectionColor={Colors.primaryColor}
@@ -216,8 +240,8 @@ const SigninScreen = ({ navigation }) => {
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <FontAwesome name="user" size={17} color={Colors.grayColor} />
                     <TextInput
-                        value={userName}
-                        onChangeText={(text) => updateState({ userName: text })}
+                        value={name,email}
+                        onChangeText={setName,setEmail}
                         placeholder="User Name"
                         placeholderTextColor={Colors.grayColor}
                         selectionColor={Colors.primaryColor}

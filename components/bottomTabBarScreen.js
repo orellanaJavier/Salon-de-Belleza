@@ -1,10 +1,10 @@
 import React, { useState, useCallback } from "react";
 import { Text, BackHandler, StyleSheet, Image, View } from "react-native";
-import { Colors, Fonts, Sizes } from "../constants/styles";
+import { Colors, Fonts, Sizes } from '../constants/styles';
 import HomeScreen from "../screens/home/homeScreen";
-import ProfileScreen from "../screens/profile/profileScreen";
-import NearByScreen from "../screens/nearBy/nearByScreen";
-import AppointmentScreen from "../screens/appointment/appointmentScreen";
+import ProfileScreen from "../screens/profileScreen";
+import NearByScreen from "../screens/nearByScreen";
+import AppointmentScreen from "../screens/appointmentScreen";
 import { useFocusEffect } from "@react-navigation/native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 

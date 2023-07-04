@@ -1,6 +1,6 @@
 import React from "react";
 import { SafeAreaView, View, StatusBar, StyleSheet, ScrollView, Image, TouchableOpacity, Text } from "react-native";
-import { Colors, Fonts, Sizes, } from "../constants/styles";
+import { Colors, Fonts, Sizes, } from '../constants/styles';
 import { MaterialIcons, AntDesign } from '@expo/vector-icons';
 
 const servicesList = ['Hair wash herbal', 'Hair color', 'Simple hair cuting - hair wash']

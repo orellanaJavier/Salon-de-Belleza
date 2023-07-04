@@ -3,82 +3,25 @@ import { SafeAreaView, View, StatusBar, ScrollView, StyleSheet, Text, TouchableO
 import { Colors, Fonts, Sizes, } from "../constants/styles";
 import { MaterialIcons } from '@expo/vector-icons';
 
-const hairWashServicesList = [
+const NailsServicesList = [
     {
         id: '1',
-        serviceName: 'Babylights en tono caramelo',
-        amount: 75.00,
-        duration: '20 min',
-        serviceDetail: 'Incluye: lavado de color, protección de color, tratamiento nutritivo post color, secado, planchado o en ondas.'
-    },
-    {
-        id: '2',
-        serviceName: 'Balayage + babylights  en tono rubio',
-        amount: 100.00,
-        duration: '35 min',
-        serviceDetail: 'Incluye: lavado de color, tratamiento de color, secado, planchado o en ondas. Precio varía, según largo de cabello, tono que se posee del cabello y tono deseado.'
-    },
-    {
-        id: '3',
-        serviceName: 'Cabello platinado en técnica de balayage',
-        amount: 100.00,
-        duration: '35 min',
-        serviceDetail: 'Incluye: protección de color, aplicación de técnica, lavado de color, tratamiento nutritivo de color, secado, planchado o en ondas. Nota: Precio varía según el largo del cabello.'
-    },
-    {
-        id: '4',
-        serviceName: 'Ondas más trenza',
-        amount: 35.00,
-        duration: '40 min',
-        serviceDetail: 'Precio varía según largo y abundancia.'
-    },
-    {
-        id: '5',
-        serviceName: 'Peinados de boda o quince años',
-        duration: '1 Hora',
-        amount: 45.00,
-        serviceDetail: 'Incluye: protección térmica, estilizado de cabello y realización de peinado. Precio varía según estilo del peinado, largo del cabello y abundancia.'
-    },
-    {
-        id: '6',
-        serviceName: 'Alisado de keratina orgánica de 50 kilates',
-        amount: 35.00,
-        duration: '1 Hora',
-        serviceDetail: 'Incluye: lavado, proceso de alisado, lavado con tratamiento incluido, secado y planchado ( posteriormente se programa lavado de finalizado y sellado) Nota: precio varía según abundancia y largo.'
-    },
-    {
-        id: '7',
-        serviceName: 'Tinte completo en cabello corto',
-        amount: 45.00,
-        duration: '1 houra 30 min',
-        serviceDetail: 'Incluye: lavado de color, tratamiento de protección, lavado nutritivo de color, secado, planchado o en ondas  Nota: El precio varía según largo, abundancia , tono deseado y tonalidad que se posee actualmente en el cabello.'
-    },
-    {
-        id: '8',
-        serviceName: 'Tinte completo en cabello largo',
-        amount: 55.00,
-        duration: '1 houra 30 min',
-        serviceDetail: 'Incluye: lavado de color, tratamiento de protección, lavado nutritivo de color, secado, planchado o en ondas Nota: El precio varía según largo, abundancia , tono deseado y tonalidad que se posee actualmente en el cabello.'
-    },
-    {
-        id: '1',
-        serviceName: 'Corte Basico',
-        amount: 5.00,
+        serviceName: 'Uñas cuadras french con diseño medianas',
+        amount: 18.00,
         duration: '30 min',
+        serviceDetail:'Precio varía según diseño y largo'
     },
 ];
 
-
-const ServiceDetailScreen = ({ navigation }) => {
-
+const NailsDetailsScreen = ({navigation}) => {
     const [state, setState] = useState({
-        selectedHairWashServiceId: hairWashServicesList[0].id,
+        selectedNailsServiceId: NailsServicesList[0].id
     })
 
     const updateState = (data) => setState((state) => ({ ...state, ...data }))
 
     const {
-        selectedHairWashServiceId,
+        selectedNailsServiceId
     } = state;
 
     return (
@@ -90,7 +33,7 @@ const ServiceDetailScreen = ({ navigation }) => {
                     showsVerticalScrollIndicator={false}
                     contentContainerStyle={{ paddingBottom: Sizes.fixPadding * 8.0, }}
                 >
-                    {hairWashServices()}
+                    {NailsServices()}
                 </ScrollView>
                 {continueButton()}
             </View>
@@ -113,18 +56,18 @@ const ServiceDetailScreen = ({ navigation }) => {
         )
     }
 
-    function hairWashServices() {
-        return (
-            <View style={{ marginHorizontal: Sizes.fixPadding * 2.0, }}>
+    function NailsServices(){
+        return(
+            <View style={{ marginTop: Sizes.fixPadding, marginHorizontal: Sizes.fixPadding * 2.0, }}>
                 <Text style={{ marginBottom: Sizes.fixPadding, ...Fonts.blackColor16Bold }}>
-                    Hair Styles
+                     Uñas Acrilicas
                 </Text>
                 {
-                    hairWashServicesList.map((item) => (
+                    NailsServicesList.map((item) => (
                         <View key={`${item.id}`}>
                             <TouchableOpacity
                                 activeOpacity={0.9}
-                                onPress={() => updateState({ selectedHairWashServiceId: item.id })}
+                                onPress={() => updateState({ selectedNailsServiceId: item.id })}
                                 style={{ alignItems: 'flex-start', flexDirection: 'row', justifyContent: 'space-between' }}
                             >
                                 <View style={{ flex: 1 }}>
@@ -140,12 +83,12 @@ const ServiceDetailScreen = ({ navigation }) => {
                                 </View>
                                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                     <View style={{
-                                        backgroundColor: selectedHairWashServiceId == item.id ? 'transparent' : Colors.lightGrayColor,
-                                        borderColor: selectedHairWashServiceId == item.id ? Colors.primaryColor : Colors.lightGrayColor,
+                                        backgroundColor: selectedNailsServiceId == item.id ? 'transparent' : Colors.lightGrayColor,
+                                        borderColor: selectedNailsServiceId == item.id ? Colors.primaryColor : Colors.lightGrayColor,
                                         ...styles.radioButtonStyle,
                                     }}>
                                         {
-                                            selectedHairWashServiceId == item.id
+                                            selectedNailsServiceId == item.id
                                                 ?
                                                 <View style={{
                                                     backgroundColor: Colors.primaryColor,
@@ -163,18 +106,25 @@ const ServiceDetailScreen = ({ navigation }) => {
                                     </Text>
                                 </View>
                             </TouchableOpacity>
-                            <View style={{
-                                height: 1.0,
-                                backgroundColor: Colors.grayColor,
-                                marginTop: Sizes.fixPadding + 5.0,
-                                marginBottom: Sizes.fixPadding + 2.0,
-                            }} />
+                            {
+                                NailsServicesList.length == 1
+                                    ?
+                                    null
+                                    :
+                                    <View style={{
+                                        height: 1.0,
+                                        backgroundColor: Colors.grayColor,
+                                        marginTop: Sizes.fixPadding + 5.0,
+                                        marginBottom: Sizes.fixPadding + 2.0,
+                                    }} />
+                            }
                         </View>
                     ))
                 }
             </View>
         )
     }
+
 
     function header() {
         return (
@@ -186,7 +136,7 @@ const ServiceDetailScreen = ({ navigation }) => {
                     onPress={() => navigation.pop()}
                 />
                 <Text style={{ marginLeft: Sizes.fixPadding, ...Fonts.blackColor18Bold }}>
-                    Hairstyle
+                    Uñas Acrilicas
                 </Text>
             </View>
         )
@@ -226,4 +176,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ServiceDetailScreen;
+export default NailsDetailsScreen;

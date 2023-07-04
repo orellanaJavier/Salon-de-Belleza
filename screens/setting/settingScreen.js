@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { SafeAreaView, View, StatusBar, StyleSheet, ScrollView, Text, TouchableOpacity } from "react-native";
-import { Colors, Fonts, Sizes, } from "../constants/styles";
+import { Colors, Fonts, Sizes, } from '../../constants/styles';
 import { MaterialIcons } from '@expo/vector-icons';
 
 const SettingScreen = ({ navigation }) => {

@@ -1,32 +1,32 @@
 import React, { useState } from "react";
 import { SafeAreaView, View, StatusBar, FlatList, StyleSheet, Image, Text, TextInput, ImageBackground, TouchableOpacity, } from "react-native";
-import { Colors, Fonts, Sizes, } from "../constants/styles";
-import CollapsingToolbar from "../components/sliverAppBar";
+import { Colors, Fonts, Sizes, } from '../../constants/styles';
+import CollapsingToolbar from "../../components/sliverAppBar";
 import { MaterialIcons } from '@expo/vector-icons';
 import { Snackbar } from 'react-native-paper';
 
 const popularCategoriesList = [
     {
         id: '1',
-        categoryImage: require('../assets/images/icons/nails.png'),
+        categoryImage: require('../../assets/images/icons/nails.png'),
         categoryName: 'Nails',
         bgColor: '#F48FB1',
     },
     {
         id: '2',
-        categoryImage: require('../assets/images/icons/hair.png'),
+        categoryImage: require('../../assets/images/icons/hair.png'),
         categoryName: 'Hair',
         bgColor: '#CE93D8',
     },
     {
         id: '3',
-        categoryImage: require('../assets/images/icons/face.png'),
+        categoryImage: require('../../assets/images/icons/face.png'),
         categoryName: 'Face',
         bgColor: '#90CAF9',
     },
     {
         id: '4',
-        categoryImage: require('../assets/images/icons/massage.png'),
+        categoryImage: require('../../assets/images/icons/massage.png'),
         categoryName: 'Massage',
         bgColor: '#80CBC4',
     },
@@ -35,18 +35,9 @@ const popularCategoriesList = [
 const bestSalonList = [
     {
         id: '1',
-        salonImage: require('../assets/images/salon/salon2.png'),
-        salonName: 'Crown salon',
-        salonAddress: 'A 9/a Sector 16,Gautam Budh Nagar',
-        rating: 4.6,
-        reviews: 100,
-        isFavorite: false,
-    },
-    {
-        id: '2',
-        salonImage: require('../assets/images/salon/salon3.png'),
-        salonName: 'RedBox salon',
-        salonAddress: 'A 9/a Sector 16,Gautam Budh Nagar',
+        salonImage: require('../../assets/images/salon/SalonInfo.png'),
+        salonName: 'Gemelas salon',
+        salonAddress: 'Col: Betania, Ave: Bengali, San miguel',
         rating: 4.6,
         reviews: 100,
         isFavorite: false,
@@ -57,14 +48,14 @@ const offersList = [
     {
         id: '1',
         salonName: 'Joseph drake hair salon',
-        salonImage: require('../assets/images/offer/offer1.png'),
+        salonImage: require('../../assets/images/offer/offer1.png'),
         offerTitle: 'Look awesome & save some',
         offer: 25
     },
     {
         id: '2',
         salonName: 'Joseph drake hair salon',
-        salonImage: require('../assets/images/offer/offer1.png'),
+        salonImage: require('../../assets/images/offer/offer1.png'),
         offerTitle: 'Look awesome & save some',
         offer: 25
     },
@@ -97,7 +88,7 @@ const HomeScreen = ({ navigation }) => {
                         <View style={{ flex: 1 }}>
                             {userInfo()}
                             <Text style={{ ...Fonts.whiteColor18SemiBold }}>
-                                Find and book best services
+                                Busca un servicio y reserva tu cita
                             </Text>
                             {searchField()}
                         </View>
@@ -106,7 +97,7 @@ const HomeScreen = ({ navigation }) => {
                     isImageBlur={true}
                     toolbarMinHeight={62}
                     toolbarMaxHeight={230}
-                    src={require('../assets/images/salon/salon1.png')}
+                    src={require('../../assets/images/salon/salon1.png')}
                 >
                     <View style={{}}>
                         {popularCategoryInfo()}
@@ -160,7 +151,7 @@ const HomeScreen = ({ navigation }) => {
         return (
             <View style={{ marginVertical: Sizes.fixPadding + 5.0, }}>
                 <Text style={{ marginHorizontal: Sizes.fixPadding * 2.0, ...Fonts.blackColor16Bold }}>
-                    Offers
+                    Nuestras Ofertas
                 </Text>
                 <FlatList
                     data={offersList}
@@ -250,7 +241,7 @@ const HomeScreen = ({ navigation }) => {
         return (
             <View>
                 <Text style={{ marginHorizontal: Sizes.fixPadding * 2.0, ...Fonts.blackColor16Bold }}>
-                    Best Salon
+                    Mas informacion
                 </Text>
                 <FlatList
                     data={bestSalons}
@@ -294,7 +285,7 @@ const HomeScreen = ({ navigation }) => {
         return (
             <View style={{ marginVertical: Sizes.fixPadding + 5.0, }}>
                 <Text style={{ marginHorizontal: Sizes.fixPadding * 2.0, ...Fonts.blackColor16Bold }}>
-                    Popular Category
+                    Categorias Populares
                 </Text>
                 <FlatList
                     ListHeaderComponent={
@@ -303,7 +294,7 @@ const HomeScreen = ({ navigation }) => {
                             ...styles.popularCategoryWrapStyle
                         }}>
                             <Image
-                                source={require('../assets/images/icons/all.png')}
+                                source={require('../../assets/images/icons/all.png')}
                                 style={{ width: 18.0, height: 18.0, }}
                                 resizeMode="contain"
                             />
@@ -335,7 +326,7 @@ const HomeScreen = ({ navigation }) => {
                 <View>
                     <View style={{ flexDirection: 'row', alignItems: 'center', }}>
                         <Image
-                            source={require('../assets/images/icons/whiteNearby.png')}
+                            source={require('../../assets/images/icons/whiteNearby.png')}
                             style={{ width: 16.0, height: 16.0, }}
                             resizeMode="contain"
                         />
@@ -368,7 +359,7 @@ const HomeScreen = ({ navigation }) => {
                 <TextInput
                     value={search}
                     onChangeText={(text) => updateState({ search: text })}
-                    placeholder="Search salon services..."
+                    placeholder="Busca tu Servicio..."
                     placeholderTextColor={Colors.whiteColor}
                     selectionColor={Colors.whiteColor}
                     style={{ marginLeft: Sizes.fixPadding, flex: 1, ...Fonts.whiteColor14Medium }}

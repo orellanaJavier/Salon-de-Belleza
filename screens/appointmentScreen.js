@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { SafeAreaView, View, StatusBar, StyleSheet, Text } from "react-native";
 import { Colors, Fonts, Sizes, } from "../constants/styles";
 import { TabView, TabBar } from 'react-native-tab-view';
-import AppointmentUpcoming from "../appointmentUpcoming/appointmentUpcomingScreen";
-import AppointmentPast from "../appointmentPast/appointmentPastScreen";
+import AppointmentUpcoming from "./appointmentUpcomingScreen";
+import AppointmentPast from "./appointmentPastScreen";
 
 const AppointmentScreen = ({ navigation }) => {
 

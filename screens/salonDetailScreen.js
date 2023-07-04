@@ -5,6 +5,7 @@ import { MaterialIcons, AntDesign, FontAwesome } from '@expo/vector-icons';
 import CollapsingToolbar from "../components/sliverAppBar";
 import MapView from 'react-native-maps';
 import { Snackbar } from 'react-native-paper';
+import { source } from "deprecated-react-native-prop-types/DeprecatedImagePropType";
 
 const { width } = Dimensions.get('window');
 
@@ -28,102 +29,35 @@ const packageAndOffersList = [
 ];
 
 const aboutList = [
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet',
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    'Con esfuerzo y amor Gemelas Salon nace para cumplir satisfactoriamente las espectativas de belleza',
+    'a nuestros clientes utilizando productos de calidad e implementando tecnicas de vanguardia en cada uno de los procesos',
 ];
 
 const specialists = [
     {
         id: '1',
         specialistImage: require('../assets/images/specialists/specialist1.png'),
-        specialistName: 'Sora',
-        speciality: 'Manager',
+        specialistName: 'Caudia Margoth',
+        speciality: 'Dueña',
     },
     {
         id: '2',
         specialistImage: require('../assets/images/specialists/specialist2.png'),
-        specialistName: 'Joya',
-        speciality: 'Hair stylist',
+        specialistName: 'Claudia Vanessa',
+        speciality: 'Nails Bar',
     },
     {
         id: '3',
         specialistImage: require('../assets/images/salon/salon4.png'),
-        specialistName: 'Doe',
-        speciality: 'St.Barber',
+        specialistName: 'Rosario Elizabeth',
+        speciality: 'Cabina Area',
     },
-    {
-        id: '4',
-        specialistImage: require('../assets/images/specialists/specialist3.png'),
-        specialistName: 'Helina',
-        speciality: 'M.Artist',
-    },
-    {
-        id: '5',
-        specialistImage: require('../assets/images/specialists/specialist4.png'),
-        specialistName: 'Robat',
-        speciality: 'Hair Stylist',
-    },
-    {
-        id: '6',
-        specialistImage: require('../assets/images/specialists/specialist4.png'),
-        specialistName: 'Robat',
-        speciality: 'Hair Stylist',
-    }
+    
+    
+   
 ];
 
-const servicesList = [
-    {
-        id: '1',
-        serviceImage: require('../assets/images/icons/hairstyle.png'),
-        serviceName: 'Hairstyle',
-        serviceTypes: 10,
-        bgColor: '#EF9A9A',
-    },
-    {
-        id: '2',
-        serviceImage: require('../assets/images/icons/hairdryer.png'),
-        serviceName: 'Hairdryer',
-        serviceTypes: 5,
-        bgColor: '#F48FB1',
-    },
-    {
-        id: '3',
-        serviceImage: require('../assets/images/icons/shaving.png'),
-        serviceName: 'Shaving',
-        serviceTypes: 6,
-        bgColor: '#CE93D8',
-    },
-    {
-        id: '4',
-        serviceImage: require('../assets/images/icons/makeup.png'),
-        serviceName: 'Makeup',
-        serviceTypes: 10,
-        bgColor: '#90CAF9',
-    },
-    {
-        id: '5',
-        serviceImage: require('../assets/images/icons/nails.png'),
-        serviceName: 'Nails',
-        serviceTypes: 5,
-        bgColor: '#80CBC4',
-    },
-    {
-        id: '6',
-        serviceImage: require('../assets/images/icons/coloring.png'),
-        serviceName: 'Coloring',
-        serviceTypes: 6,
-        bgColor: '#EF9A9A',
-    },
-    {
-        id: '7',
-        serviceImage: require('../assets/images/icons/massage.png'),
-        serviceName: 'Massage',
-        serviceTypes: 6,
-        bgColor: '#F48FB1',
-    },
-];
+
 
 const galleryImagesList = [
     {
@@ -403,48 +337,23 @@ const SalonDetailScreen = ({ navigation, route }) => {
 
     function salonServicesInfo() {
         return (
-            <View style={{ marginHorizontal: Sizes.fixPadding * 2.0, }}>
+            <View style={{left:20,flex:1,}}>
                 <Text style={{ marginBottom: Sizes.fixPadding, ...Fonts.blackColor16Bold }}>
-                    Services
+                    Servicios
                 </Text>
-                {
-                    servicesList.map((item) => (
-                        <View key={`${item.id}`}>
-                            <View style={styles.salonServicesWrapStyle}>
-                                <View style={{
-                                    flexDirection: 'row',
-                                    alignItems: 'center',
-                                }}>
-                                    <View style={{
-                                        ...styles.salonServiceImageWrapStyle,
-                                        backgroundColor: item.bgColor,
-                                    }}>
-                                        <Image
-                                            source={item.serviceImage}
-                                            style={{ width: 22.0, height: 22.0, }}
-                                            resizeMode="contain"
-                                            tintColor={Colors.whiteColor}
-                                        />
-                                    </View>
-                                    <View style={{ marginLeft: Sizes.fixPadding, }}>
-                                        <Text style={{ marginTop: Sizes.fixPadding - 5.0, lineHeight: 15.0, ...Fonts.blackColor13Bold }}>
-                                            {item.serviceName}
-                                        </Text>
-                                        <Text style={{ ...Fonts.grayColor11SemiBold }}>
-                                            {item.serviceTypes}types
-                                        </Text>
-                                    </View>
-                                </View>
-                                <Text
-                                    onPress={() => navigation.push('ServiceDetail')}
-                                    style={{ marginHorizontal: Sizes.fixPadding, ...Fonts.primaryColor14Bold }}
-                                >
-                                    View
-                                </Text>
-                            </View>
-                        </View>
-                    ))
-                }
+                <Image 
+                 source={require('../assets/images/icons/hairstyle.png')}
+                 style={{ width: 50, height: 50,top:40,left:10,backgroundColor:'aqua',borderRadius:30}}
+                 resizeMode="contain"
+                />
+                <Text style={{ marginBottom: Sizes.fixPadding, ...Fonts.blackColor16Bold,top:10,left:65 }}>
+                    Hair style</Text>   
+                <Text
+                     onPress={() => navigation.push('ServiceDetail')}
+                     style={{ marginHorizontal: Sizes.fixPadding, ...Fonts.primaryColor14Bold,top:-20,left:240 }}>
+                        Ver Mas
+                 </Text>
+                
             </View>
         )
     }
@@ -566,8 +475,8 @@ const SalonDetailScreen = ({ navigation, route }) => {
                                 height: 90.0,
                             }}
                             initialRegion={{
-                                latitude: 37.78825,
-                                longitude: -122.4324,
+                                latitude: 13.794185,
+                                longitude: -88.89653,
                                 latitudeDelta: 0.0922,
                                 longitudeDelta: 0.0421,
                             }}
@@ -585,15 +494,18 @@ const SalonDetailScreen = ({ navigation, route }) => {
                 marginBottom: Sizes.fixPadding - 5.0,
             }}>
                 <Text style={{ ...Fonts.blackColor16Bold }}>
-                    Opening Hours
+                    Horario de Atencion
                 </Text>
                 <View style={styles.openingHoursWrapStyle}>
                     <View style={{ alignItems: 'center' }}>
                         <Text style={{ ...Fonts.grayColor13Bold }}>
-                            Monday-Friday
+                            Lunes-Sabado
                         </Text>
                         <Text style={{ lineHeight: 17.0, ...Fonts.primaryColor14Bold }}>
-                            9:00 am - 9:00 pm
+                            9:00 am - 5:00 pm
+                        </Text>
+                        <Text style={{ ...Fonts.blackColor16Bold ,top:15}}>
+                          Domingos: Eventos especiales
                         </Text>
                     </View>
                     <View style={{ alignItems: 'center' }}>
@@ -601,7 +513,7 @@ const SalonDetailScreen = ({ navigation, route }) => {
                             Monday-Friday
                         </Text>
                         <Text style={{ lineHeight: 17.0, ...Fonts.primaryColor14Bold }}>
-                            9:00 am - 9:00 pm
+                            8:00 am - 9:00 pm
                         </Text>
                     </View>
                 </View>
@@ -668,19 +580,19 @@ const SalonDetailScreen = ({ navigation, route }) => {
                     onPress={() => updateState({ currentSelectedIndex: 1 })}
                     style={currentSelectedIndex == 1 ? { ...Fonts.primaryColor15Bold } : { ...Fonts.grayColor15Bold }}
                 >
-                    About
+                    Filosofia
                 </Text>
                 <Text
                     onPress={() => updateState({ currentSelectedIndex: 2 })}
                     style={currentSelectedIndex == 2 ? { ...Fonts.primaryColor15Bold } : { ...Fonts.grayColor15Bold }}
                 >
-                    Services
+                    Servicios
                 </Text>
                 <Text
                     onPress={() => updateState({ currentSelectedIndex: 3 })}
                     style={currentSelectedIndex == 3 ? { ...Fonts.primaryColor15Bold } : { ...Fonts.grayColor15Bold }}
                 >
-                    Gallery
+                    Galleria
                 </Text>
                 <Text
                     onPress={() => updateState({ currentSelectedIndex: 4 })}
@@ -1015,11 +927,10 @@ const styles = StyleSheet.create({
         marginVertical: Sizes.fixPadding - 5.0,
     },
     salonServicesWrapStyle: {
-        flexDirection: 'row',
+        flex:1,
         alignItems: 'center',
         justifyContent: 'space-between',
         backgroundColor: Colors.whiteColor,
-        elevation: 1.5,
         borderRadius: Sizes.fixPadding,
         borderColor: '#f1f1f1',
         borderWidth: 0.40,

@@ -9,7 +9,7 @@ import {
     Text,
     StyleSheet,
 } from "react-native";
-import { Colors, Fonts, Sizes } from "../constants/styles";
+import { Colors, Fonts, Sizes } from '../constants/styles';
 import { MaterialIcons } from '@expo/vector-icons';
 import { CreditCardInput } from "../components/creditCard/expo-credit-card";
 

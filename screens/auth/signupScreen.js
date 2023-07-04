@@ -1,18 +1,41 @@
 import React, { useState } from "react";
 import { Dimensions, SafeAreaView, View, StatusBar, ScrollView, StyleSheet, Image, ImageBackground, TouchableOpacity, TextInput, Text } from "react-native";
-import { Colors, Fonts, Sizes, } from "../constants/styles";
+import { Colors, Fonts, Sizes, } from '../../constants/styles';
 import { MaterialIcons, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigation } from "@react-navigation/native";
+import {getAuth,createUserWithEmailAndPassword} from 'firebase/auth';
+import { initializeApp } from 'firebase/app';
+import { firebaseConfig } from '../../firebaseConfig';
 
 const { width } = Dimensions.get('window');
 
-const SignupScreen = ({ navigation }) => {
+const SignupScreen = () => {
+    const [email,setEmail] = React.useState('')
+    const [password,setPassword] = React.useState('')
+    const [confirmPassword,setConfirmPassword] = React.useState('')
+    const [name,setName] = React.useState('')
+    const navigation = useNavigation();
+  
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+  
+    const handleCreateAccount = () => {
+      createUserWithEmailAndPassword(auth,email,password,confirmPassword,name)
+      .then((userCredential) =>{
+        console.log('Cuenta Creada')
+        navigation.navigate('Signin');
+        const user = userCredential.user;
+        console.log(user)
+      })
+      .catch(error =>{
+        console.log(error)
+        Alert.alert(error.message)
+      })
+    }
 
     const [state, setState] = useState({
         userName: null,
-        email: null,
         mobileNumber: null,
-        password: null,
-        confirmPassword: null,
         securePassword: false,
         secureConfirmPassword: false,
     })
@@ -21,10 +44,7 @@ const SignupScreen = ({ navigation }) => {
 
     const {
         userName,
-        email,
         mobileNumber,
-        password,
-        confirmPassword,
         securePassword,
         secureConfirmPassword,
     } = state;
@@ -33,7 +53,7 @@ const SignupScreen = ({ navigation }) => {
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
             <StatusBar backgroundColor={Colors.primaryColor} />
             <ImageBackground
-                source={require('../assets/images/bg.png')}
+                source={require('../../assets/images/bg.png')}
                 style={{
                     flex: 1,
                     left: -width / 20.0,
@@ -82,15 +102,15 @@ const SignupScreen = ({ navigation }) => {
                 <View style={styles.socialMediaOptionsWrapStyle}>
                     {optionsShort({
                         bgColor: '#4267B2',
-                        image: require('../assets/images/icons/facebook.png'),
+                        image: require('../../assets/images/icons/facebook.png'),
                     })}
                     {optionsShort({
                         bgColor: '#1DA1F2',
-                        image: require('../assets/images/icons/twitter.png'),
+                        image: require('../../assets/images/icons/twitter.png'),
                     })}
                     {optionsShort({
                         bgColor: '#EA4335',
-                        image: require('../assets/images/icons/google.png')
+                        image: require('../../assets/images/icons/google.png')
                     })}
                 </View>
             </View>
@@ -133,7 +153,7 @@ const SignupScreen = ({ navigation }) => {
         return (
             <TouchableOpacity
                 activeOpacity={0.9}
-                onPress={() => navigation.push('Verification')}
+                onPress={handleCreateAccount}
                 style={styles.signupButtonStyle}
             >
                 <Text style={{ ...Fonts.whiteColor18SemiBold }}>
@@ -152,8 +172,8 @@ const SignupScreen = ({ navigation }) => {
                         <TextInput
                             secureTextEntry={secureConfirmPassword}
                             value={confirmPassword}
-                            onChangeText={(text) => updateState({ confirmPassword: text })}
-                            placeholder="Confirm Password"
+                            onChangeText={setConfirmPassword}
+                            placeholder="Confirmar Contraseña"
                             placeholderTextColor={Colors.grayColor}
                             selectionColor={Colors.primaryColor}
                             style={{
@@ -186,8 +206,8 @@ const SignupScreen = ({ navigation }) => {
                         <TextInput
                             secureTextEntry={securePassword}
                             value={password}
-                            onChangeText={(text) => updateState({ password: text })}
-                            placeholder="Password"
+                            onChangeText={setPassword}
+                            placeholder="Contraseña"
                             placeholderTextColor={Colors.grayColor}
                             selectionColor={Colors.primaryColor}
                             style={{
@@ -244,7 +264,7 @@ const SignupScreen = ({ navigation }) => {
                     <MaterialIcons name="email" size={19} color={Colors.grayColor} />
                     <TextInput
                         value={email}
-                        onChangeText={(text) => updateState({ email: text })}
+                        onChangeText={setEmail}
                         placeholder="Email"
                         placeholderTextColor={Colors.grayColor}
                         selectionColor={Colors.primaryColor}
@@ -270,9 +290,9 @@ const SignupScreen = ({ navigation }) => {
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <FontAwesome name="user" size={17} color={Colors.grayColor} />
                     <TextInput
-                        value={userName}
-                        onChangeText={(text) => updateState({ userName: text })}
-                        placeholder="User Name"
+                        value={name}
+                        onChangeText={setName}
+                        placeholder="Usuario"
                         placeholderTextColor={Colors.grayColor}
                         selectionColor={Colors.primaryColor}
                         style={{

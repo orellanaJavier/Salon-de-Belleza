@@ -11,124 +11,32 @@ const salonsList = [
     {
         id: '1',
         salonImage: require('../assets/images/salon/salon2.png'),
-        salonName: 'Crown salon',
+        salonName: 'Gemelas salon',
         salonAddress: 'A 9/a Sector 16,Gautam Budh Nagar',
         rating: 4.6,
         reviews: 100,
         salonOpenTime: '9:00 am',
-        salonCloseTime: '9:00 pm',
+        salonCloseTime: '5:00 pm',
         isFavorite: false,
     },
-    {
-        id: '2',
-        salonImage: require('../assets/images/salon/salon3.png'),
-        salonName: 'RedBox salon',
-        salonAddress: 'A 9/a Sector 16,Gautam Budh Nagar',
-        rating: 4.6,
-        reviews: 100,
-        salonOpenTime: '9:00 am',
-        salonCloseTime: '9:00 pm',
-        isFavorite: true,
-    },
-    {
-        id: '3',
-        salonImage: require('../assets/images/salon/salon4.png'),
-        salonName: 'Ultra unisex salon',
-        salonAddress: 'A 9/a Sector 16,Gautam Budh Nagar',
-        rating: 4.6,
-        reviews: 100,
-        salonOpenTime: '9:00 am',
-        salonCloseTime: '9:00 pm',
-        isFavorite: true,
-    },
-    {
-        id: '4',
-        salonImage: require('../assets/images/salon/salon5.png'),
-        salonName: 'Livestyle salon',
-        salonAddress: 'A 9/a Sector 16,Gautam Budh Nagar',
-        rating: 4.6,
-        reviews: 100,
-        salonOpenTime: '9:00 am',
-        salonCloseTime: '9:00 pm',
-        isFavorite: false,
-    },
-    {
-        id: '5',
-        salonImage: require('../assets/images/salon/salon6.png'),
-        salonName: 'Opera city salon',
-        salonAddress: 'A 9/a Sector 16,Gautam Budh Nagar',
-        rating: 4.6,
-        reviews: 100,
-        salonOpenTime: '9:00 am',
-        salonCloseTime: '9:00 pm',
-        isFavorite: false,
-    },
-    {
-        id: '6',
-        salonImage: require('../assets/images/salon/salon7.png'),
-        salonName: 'Wonder spot salon',
-        salonAddress: 'A 9/a Sector 16,Gautam Budh Nagar',
-        rating: 4.6,
-        reviews: 100,
-        salonOpenTime: '9:00 am',
-        salonCloseTime: '9:00 pm',
-        isFavorite: false,
-    },
+    
 ];
 
 const markersList = [
     {
         coordinate: {
-            latitude: 22.6293867,
-            longitude: 88.4354486,
+            latitude: 13.794185,
+            longitude: -88.89653,
         },
         id: '1',
         salonImage: require('../assets/images/salon/salon2.png'),
-        salonName: 'Crown salon',
+        salonName: 'Gemelas salon',
         salonAddress: 'A 9/a Sector 16,Gautam Budh Nagar',
         rating: 4.6,
         reviews: 100,
         isFavorite: false,
     },
-    {
-        coordinate: {
-            latitude: 22.6345648,
-            longitude: 88.4377279,
-        },
-        id: '2',
-        salonImage: require('../assets/images/salon/salon3.png'),
-        salonName: 'RedBox salon',
-        salonAddress: 'A 9/a Sector 16,Gautam Budh Nagar',
-        rating: 4.6,
-        reviews: 100,
-        isFavorite: false,
-    },
-    {
-        coordinate: {
-            latitude: 22.6281662,
-            longitude: 88.4410113,
-        },
-        id: '3',
-        salonImage: require('../assets/images/salon/salon4.png'),
-        salonName: 'Ultra unisex salon',
-        salonAddress: 'A 9/a Sector 16,Gautam Budh Nagar',
-        rating: 4.6,
-        reviews: 100,
-        isFavorite: false,
-    },
-    {
-        coordinate: {
-            latitude: 22.6341137,
-            longitude: 88.4497463,
-        },
-        id: '4',
-        salonImage: require('../assets/images/salon/salon5.png'),
-        salonName: 'Livestyle Salon',
-        salonAddress: 'A 9/a Sector 16,Gautam Budh Nagar',
-        rating: 4.6,
-        reviews: 100,
-        isFavorite: false,
-    },
+    
 ];
 
 const cardWidth = width / 1.5;
@@ -209,8 +117,8 @@ const NearByScreen = ({ navigation }) => {
                 <MapView
                     initialRegion={
                         {
-                            latitude: 22.62938671242907,
-                            longitude: 88.4354486029795,
+                            latitude: 13.794185,
+                            longitude:-88.89653 ,
                             latitudeDelta: 0.04864195044303443,
                             longitudeDelta: 0.040142817690068,
                         }
@@ -220,8 +128,8 @@ const NearByScreen = ({ navigation }) => {
                 >
                     <Marker
                         coordinate={{
-                            latitude: 22.6292757,
-                            longitude: 88.444781,
+                            latitude: 13.794185 ,
+                            longitude: -88.89653,
                         }}
                     >
                         <Image
